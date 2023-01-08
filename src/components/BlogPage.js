@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { blogdata } from "../data/blogData";
 
 function BlogPage(){
@@ -11,6 +11,7 @@ function BlogPage(){
         <BlogLink key={post.slug} post={post}/>
         ))}
     </ul>
+    <Outlet/>
     </>
   )
 }

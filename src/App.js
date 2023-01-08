@@ -3,21 +3,29 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/HomePage';
 import { BlogPage } from './components/BlogPage';
 import { ProfilePage } from './components/ProfilePage';
+import { LoginPage } from './components/LoginPage';
+import { LogoutPage } from './components/LogoutPage';
 import { BlogPost } from './components/BlogPost';
+import { AuthProvider } from './components/auth';
 import { Menu } from './components/Menu';
 
 function App() {
   return (
     <>
       <HashRouter>
-        <Menu/>
-        <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path='/blog' element={<BlogPage/>}/>
-          <Route path='/blog/:slug' element={<BlogPost/>}/>
-          <Route path='/profile' element={<ProfilePage/>}/>
-          <Route path='*' element={<h1>Not Found</h1>}/>
-        </Routes>
+        <AuthProvider>
+          <Menu/>
+          <Routes>
+            <Route path='/' element={<HomePage/>}/>
+            <Route path='/blog' element={<BlogPage/>}>
+              <Route path=':slug' element={<BlogPost/>}/>
+            </Route>
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/logout' element={<LogoutPage/>}/>
+            <Route path='/profile' element={<ProfilePage/>}/>
+            <Route path='*' element={<h1>Not Found</h1>}/>
+          </Routes>
+        </AuthProvider>
       </HashRouter>
     </>
   );
