@@ -6,7 +6,7 @@ function Menu(){
     <nav>
       <ul>
         {routes.map(route => (
-          <li>
+          <li key={route.to}>
             <NavLink 
               //className={({isActive})=>''}
               style={({isActive})=>({color: isActive ? 'red':'blue'})}
