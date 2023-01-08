@@ -7,6 +7,7 @@ function LogoutPage(){
     e.preventDefault()
     auth.logout()
   }
+
   return (
     <>
       <h1>Login</h1>
